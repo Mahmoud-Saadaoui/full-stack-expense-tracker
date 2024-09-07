@@ -14,10 +14,10 @@ interface Body {
  * @access     : private (only user himself)
  * @description: get all transactions
 */
-export async function Get(req: NextRequest) {
+export async function Get(request: NextRequest) {
     try {
         await connectDB()
-        const userId = req.cookies.get("userId")?.value;
+        const userId = request.cookies.get("userId")?.value;
         const transactions = await Transaction.find({ userId })
         return NextResponse.json(transactions)
     } catch (error: any) {
@@ -34,14 +34,15 @@ export async function Get(req: NextRequest) {
  * @access     : private (only user himself)
  * @description: create new transaction
 */
-export async function POST(req:NextRequest) {
+export async function POST(request:NextRequest) {
     try {
         await connectDB()
 
-        const body: Body = await req.json()
+        const body: Body = await request.json()
         const { amount, name, startDate } = body
 
-        const userId = req.cookies.get("userId")?.value;
+        const userId = request.cookies.get("userId")?.value;
+        console.log("userId: " + userId)
         const newTransaction = await Transaction.create({
             name,
             amount,
@@ -63,10 +64,10 @@ export async function POST(req:NextRequest) {
  * @access     : private (only user himself)
  * @description: delete all transactions
 */
-export async function DELETE(req:NextRequest) {
+export async function DELETE(request:NextRequest) {
     try {
         await connectDB()
-        const userId = req.cookies.get("userId")?.value;
+        const userId = request.cookies.get("userId")?.value;
         await Transaction.deleteMany({ userId })
         return NextResponse.json({ msg: "All Transactions Deleted Successfully" }, { status: 200 })
     } catch (error: any) {
