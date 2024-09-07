@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     const user = await User.create({ username, email, password: hashedPassword })
 
     // Generate Token
-    const token = createToken(user._id.toString())
+    const token = await createToken(user._id.toString())
 
     return NextResponse.json({ user, token }, { status: 200 })
 }
