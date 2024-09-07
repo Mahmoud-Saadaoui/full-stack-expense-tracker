@@ -14,7 +14,7 @@ interface Body {
  * @access     : private (only user himself)
  * @description: get all transactions
 */
-export async function Get(request: NextRequest) {
+export async function GET(request: NextRequest) {
     try {
         await connectDB()
         const userId = request.cookies.get("userId")?.value;
@@ -42,7 +42,7 @@ export async function POST(request:NextRequest) {
         const { amount, name, startDate } = body
 
         const userId = request.cookies.get("userId")?.value;
-        console.log("userId: " + userId)
+        console.log(' userId:', userId);
         const newTransaction = await Transaction.create({
             name,
             amount,

@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        ubunto: ['Ubuntu', 'sans-serif'],
+        sans: ["Ubuntu", "sans-serif"],
       },
     },
   },
