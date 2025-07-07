@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💸 Expense Tracker App (Next.js + TypeScript)
 
-## Getting Started
+A full-stack personal expense tracking app built with **Next.js**, **TypeScript**, and **Next-Intl** for multilingual support.
 
-First, run the development server:
+## 🆕 What's New
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This version introduces two major upgrades:
+
+### 📊 1. Interactive Charts
+- Visual representation of income vs. expenses.
+- Recharts integration for intuitive and dynamic insights.
+- Helps users quickly understand financial trends.
+
+### 🌐 2. Full Translation Support (i18n)
+- Now supports **English**, **French**, and **Arabic** out of the box.
+- Language-specific routing via Next.js App Router and `[locale]` segment.
+- Translations managed using `next-intl` for seamless localization.
+
+## 🚀 Features
+
+- 🔐 User authentication (Register / Login)
+- ➕ Add and manage transactions (name, amount, date)
+- 📊 **Visualize income & expenses via dynamic charts**
+- 🌍 **Multilingual interface (English & Arabic)** using `next-intl`
+- ⚠️ Smart alert messages via a reusable `useFormMessage` hook
+- ♻️ Fully responsive UI with a clean, modern layout
+- 🧪 Modular code structure: reusable components, hooks, and styles
+
+---
+
+## 🧰 Tech Stack
+
+| Frontend              | Backend        | Others                      |
+|-----------------------|----------------|------------------------------|
+| Next.js 14+ (App Router) | Node.js       | TypeScript Everywhere        |
+| React 18              | Mongoose       | CSS Modules                  |
+| next-intl (i18n)      | JWT Auth       | ESLint / Prettier            |
+| Chart.js              | Bcrypt / JOSE  | Reusable Hooks (e.g. `useFormMessage`) |
+| Context API           | REST API       |                              |
+## 🔧 Getting Started
+1. **Clone the repository**
+2. **Install dependencies**
+  ```
+  npm install
+  ```
+2. **Create a __.env__ file**
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+NODE_ENV=development
+PORT=5000
+MONGO_URI=
+JWT_SECRET=
+JWT_EXPIRATION=
+```

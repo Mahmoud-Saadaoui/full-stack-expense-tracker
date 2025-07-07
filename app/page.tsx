@@ -1,9 +1,5 @@
+import { redirect } from "next/navigation";
 
-
-export default function Home() {
-  return (
-    <div className="text-xl text-center font-bold text-zinc-500">
-      Expense Tracker 
-    </div>
-  );
+export default function RootPage() {
+  redirect("/en");
 }

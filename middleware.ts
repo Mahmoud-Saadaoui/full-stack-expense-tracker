@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import isAuthenticated from "./libs/isAuthenticated";
+import createMiddleware from "next-intl/middleware";
 
+import isAuthenticated from "./app/libs/isAuthenticated";
 
 export const config = {
   matcher: ["/api/transaction/", "/((?!api|_next|.*\\..*).*)"],
@@ -21,3 +22,8 @@ export async function middleware(request: NextRequest) {
     }
   }
 }
+
+export default createMiddleware({
+  locales: ["en", "ar"],
+  defaultLocale: "en",
+});

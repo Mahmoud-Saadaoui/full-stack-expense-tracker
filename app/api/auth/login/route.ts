@@ -1,42 +1,37 @@
-import User from "@/models/User";
-import bcrypt from "bcryptjs";
-import connectDB from "@/libs/connectDB";
-import createToken from "@/libs/createTokens";
+import User from "@/app/models/User";
+import connectDB from "@/app/libs/connectDB";
 import { NextRequest, NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
+import createToken from "@/app/libs/createToken";
 
-interface Body {
-    email: string;
-    password: string;
-}
+type Body = {
+  email: string;
+  password: string;
+};
 
-/**
- *  @method: POST
- *  @route : /api/auth/register
- * @access : public
-*/
 export async function POST(request: NextRequest) {
-    //  Connecting With MongoDB
-    await connectDB()
+  await connectDB();
+  const { email, password }: Body = await request.json();
 
-    const body: Body = await request.json()
-    const { email, password } = body
+  // login
+  const user = await User.findOne({ email });
 
-    // Find User
-    const user = await User.findOne({ email })
-    if (!user) {
-        return NextResponse.json({ msg: "Invalid Credentials" }, { status: 400 })
-    }
-
-    const isPasswordMatch = await bcrypt.compare(password, user.password)
-    if (!isPasswordMatch) {
-        return NextResponse.json({ msg: "Invalid Credentials" }, { status: 400 })
-    }
-
-    // Generate Token
-    const token = await createToken(user._id.toString())
-
+  if (!user) {
     return NextResponse.json(
-      { data: { username: user.username, email: user.email }, token },
-      { status: 200 }
+      { message: "Email is incorrect" },
+      { status: 404 }
     );
+  }
+
+  const isPasswordMatch = await bcrypt.compare(password, user.password);
+  if (!isPasswordMatch) {
+    return NextResponse.json(
+      { message: "Password is incorrect" },
+      { status: 400 }
+    );
+  }
+
+  const token = await createToken(user._id.toString());
+
+  return NextResponse.json({ user, token });
 }

@@ -1,40 +1,36 @@
-import User from "@/models/User";
 import bcrypt from "bcryptjs";
-import connectDB from "@/libs/connectDB";
-import createToken from "@/libs/createTokens";
+import User from "@/app/models/User";
+import connectDB from "@/app/libs/connectDB";
+import createToken from "@/app/libs/createToken";
 import { NextRequest, NextResponse } from "next/server";
 
 interface Body {
-    email: string;
-    password: string;
-    confirmPassword?: string;
-    username: string;
+  username: string;
+  email: string;
+  password: string;
+  confirmationPassword?: string;
 }
-
-/**
- *  @method: POST
- *  @route : /api/auth/register
- * @access : public
-*/
 export async function POST(request: NextRequest) {
-    //  Connecting With MongoDB
-    await connectDB()
+  try {
+    await connectDB();
+    const body: Body = await request.json();
+    if (body.password !== body.confirmationPassword)
+      return NextResponse.json(
+        { message: "Password and confirmation password must be the same" },
+        { status: 400 }
+      );
+    delete body.confirmationPassword;
 
-    const body: Body = await request.json()
-    const { username, email, password, confirmPassword } = body
+    const hashedPassword = await bcrypt.hash(body.password, 12);
 
-    //  Confirm Password
-    if (password !== confirmPassword) {
-        return NextResponse.json({ msg: "Passwords doesn't match" }, { status: 400 })
-    }
+    const user = await User.create({
+      ...body,
+      password: hashedPassword,
+    });
 
-    const hashedPassword = await bcrypt.hash(password, 12)
-
-    //  Create New User
-    const user = await User.create({ username, email, password: hashedPassword })
-
-    // Generate Token
-    const token = await createToken(user._id.toString())
-
-    return NextResponse.json({ user, token }, { status: 200 })
+    const token = await createToken(user._id.toString());
+    return NextResponse.json({ user, token });
+  } catch (error: any) {
+    return NextResponse.json({ message: error.message }, { status: 500 });
+  }
 }

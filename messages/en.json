@@ -1,0 +1,61 @@
+{
+  "Login": {
+    "title": "Expense Tracker",
+    "description": "Track and manage your expenses easily and efficiently.",
+    "register": "Register",
+    "dontHaveAccount": "Don't have an account?",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login"
+  },
+  "Register": {
+    "title": "Expense Tracker",
+    "description": "Create a new account",
+    "alreadyHaveAccount": "Already have an account?",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "register": "Register",
+    "login": "Login"
+  },
+  "Home": {
+    "title": "Expense Tracker",
+    "visualizeBalance": "Visualize balance",
+    "yourBalance": "Your balance",
+    "income": "Income",
+    "expense": "Expense",
+    "history": "History",
+    "addNewTransaction": "Add New transaction",
+    "name": "Name",
+    "amount": "Amount",
+    "enterName": "Enter name...",
+    "enterAmount": "Enter amount...",
+    "startDate": "Start Date",
+    "addTransaction": "Add Transaction",
+    "noTransactionsYet": "No Transactions Yet",
+    "logout": "Logout",
+    "expenseHint": "Add the {sign} sign for an expense.",
+    "amountMustBeNumber": "Amount must be a number",
+    "pleaseFillAllFields": "Please fill in all fields",
+    "transactionAddedSuccessfully": "Transaction added successfully",
+    "errorAddingTransaction": "An error occurred while adding the transaction",
+    "addingTransaction": "Adding..."
+  },
+  "Graph": {
+    "title": "Amount Evolution",
+    "income": "Income",
+    "expense": "Expense",
+    "balance": "Balance",
+    "noTransactionsYet": "No transactions to display"
+  },
+  "NotFound": {
+    "title": "404 - Page Not Found",
+    "message": "Sorry, we couldn’t find the page you were looking for.",
+    "back": "← Back to Home"
+  },
+  "Metadata": {
+    "title": "Expense Tracker",
+    "description": "Expense tracker is a tool designed to help track financial transactions"
+  }
+}
