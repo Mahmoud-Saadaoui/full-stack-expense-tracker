@@ -1,7 +1,8 @@
+import { BASE_URL } from "../../../app/libs/constantes";
 import { Transaction } from "../types/transaction";
 import { IAuth } from "../types/user";
 
-const BASE_URL = `http://localhost:3000/api/`;
+
 
 export async function login(
   email: string,

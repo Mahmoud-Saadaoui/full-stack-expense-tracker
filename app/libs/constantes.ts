@@ -1,0 +1,6 @@
+const PRODUCTION_DOMAIN = process.env.NEXT_PUBLIC_API_PRODUCTION_DOMAIN + "/api"
+const DEVELOPMENT_DOMAIN = process.env.NEXT_PUBLIC_API_DEVELOPMENT_DOMAIN + "/api"
+
+export const BASE_URL = process.env.NODE_ENV === 'production' 
+    ? PRODUCTION_DOMAIN
+    : DEVELOPMENT_DOMAIN;
