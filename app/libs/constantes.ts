@@ -1,3 +1,7 @@
+// - Trim trailing slashes from NEXT_PUBLIC_API_*_DOMAIN before appending '/api'
+//- Prevents malformed URLs like https://domain.com//api
+//- Improves robustness of BASE_URL handling in different environments
+
 function sanitizeDomain(domain?: string) {
   if (!domain) return "";
   return domain.endsWith("/") ? domain.slice(0, -1) : domain;
