@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
 
   if (!user) {
     return NextResponse.json(
-      { message: "Email is incorrect" },
+      { message: "Email or Password is incorrect" },
       { status: 404 }
     );
   }
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
   const isPasswordMatch = await bcrypt.compare(password, user.password);
   if (!isPasswordMatch) {
     return NextResponse.json(
-      { message: "Password is incorrect" },
+      { message: "Email or Password is incorrect" },
       { status: 400 }
     );
   }
