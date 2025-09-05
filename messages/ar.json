@@ -21,7 +21,7 @@
   },
   "Home": {
     "title": "متتبع المصاريف",
-    "visualizeBalance": "تصور الرصيد",
+    "visualizeBalance": "الرسم البياني للرصيد",
     "yourBalance": "رصيدك",
     "income": "الدخل",
     "expense": "المصروفات",

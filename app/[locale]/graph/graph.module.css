@@ -1,11 +1,14 @@
 .canvas-container {
   width: 100%;
-  max-width: 900px;
-  margin: 2rem auto;
+  height: calc(100vh - 120px); 
+  margin: 0;
   padding: 1rem;
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 0; 
+  box-shadow: none; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
@@ -35,5 +38,5 @@
 
 #myChart {
   width: 100% !important;
-  height: 500px !important;
+  height: 100% !important;
 }

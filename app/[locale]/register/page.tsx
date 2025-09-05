@@ -60,19 +60,19 @@ export default function RegisterPage() {
   }
   return (
     <div className={classes["login-container"]}>
-      {message && (
-        <Alert
-          message={message}
-          type={type ?? "error"}
-          onClose={clearMessage}
-        />
-      )}
       <div className={classes["form-container"]}>
         <div className={classes["image-login"]}>
           <Image width={100} height={100} alt="Login Image" src={cashImages} />
         </div>
         <h1 className={classes["form-title"]}>{t("title")}</h1>
         <p className={classes["form-subtitle"]}>{t("description")} </p>
+        {message && (
+          <Alert
+            message={message}
+            type={type ?? "error"}
+            onClose={clearMessage}
+          />
+        )}
         <form className={classes["form"]} onSubmit={handleSubmit}>
           <div className={classes["form-group"]}>
             <label htmlFor="username">{t("username")}</label>

@@ -12,7 +12,7 @@ This version introduces two major upgrades:
 - Helps users quickly understand financial trends.
 
 ### 🌐 2. Full Translation Support (i18n)
-- Now supports **English**, **French**, and **Arabic** out of the box.
+- Now supports **English**, and **Arabic** out of the box.
 - Language-specific routing via Next.js App Router and `[locale]` segment.
 - Translations managed using `next-intl` for seamless localization.
 
